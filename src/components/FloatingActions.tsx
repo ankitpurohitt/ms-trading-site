@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 // Centralized contact info to match your business requirements
 const WHATSAPP_NUMBER = "917425060129";
-const CALL_NUMBER = "919829586830";
+const CALL_NUMBER = "917425060129";
 const WHATSAPP_TEXT = "Hi MS Trading, I am interested in glass/aluminum work. Please contact me.";
 
 export default function FloatingActions() {
