@@ -1,4 +1,14 @@
 @import "tailwindcss";
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* This allows the Tailwind class to work */
+.group-hover\:animate-\[shimmer_2s_infinite\] {
+  animation: shimmer 2s infinite;
+}
 
 * {
   border-color: #e2e8f0;

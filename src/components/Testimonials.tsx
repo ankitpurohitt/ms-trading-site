@@ -1,61 +1,66 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Building2 } from "lucide-react";
 
-const reviews = [
+const testimonials = [
   {
-    name: "Rajesh Sharma",
-    work: "Aluminium Windows",
-    text: "Excellent finish and very professional team. Amit personally ensured the installation was perfect.",
+    name: "Grand Xenia Hotel",
+    location: "Ajmer",
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1000",
+    text: "M.S. Trading delivered exceptional toughened glass work for our lobby and suites. Their precision and professional approach are unmatched in Rajasthan.",
     rating: 5
   },
   {
-    name: "Suman Verma",
-    work: "Toughened Glass Partition",
-    text: "The quality of the glass is top-notch. It completely changed the look of our office.",
+    name: "The Fern Residency",
+    location: "Ajmer",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000",
+    text: "The premium UPVC windows and ACP facade work provided by Amit and his team significantly enhanced our building's aesthetics and insulation.",
     rating: 5
-  },
-  {
-    name: "Vikram Singh",
-    work: "ACP Sheet Elevation",
-    text: "M.S. Trading provided a very competitive quote and delivered on time. Highly recommended.",
-    rating: 4
   }
 ];
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-blue-600 font-black uppercase tracking-[0.3em] text-[10px] mb-4">Client Feedback</p>
-          <h2 className="text-4xl font-black uppercase tracking-tighter text-slate-900">What People Say</h2>
+    <section className="py-32 px-6 bg-[#020617] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <span className="text-blue-500 font-black uppercase tracking-[0.4em] text-xs">Landmark Projects</span>
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 text-white">
+            Trusted By The <br /> <span className="text-blue-500">Best In Ajmer</span>
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {reviews.map((rev, i) => (
+        <div className="grid md:grid-cols-2 gap-12">
+          {testimonials.map((t, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              className="bg-slate-50 p-8 rounded-[2.5rem] relative group hover:bg-blue-600 transition-colors duration-500"
+              className="group relative bg-white/[0.03] border border-white/10 rounded-[3rem] overflow-hidden backdrop-blur-sm"
             >
-              <Quote className="absolute top-6 right-8 text-slate-200 group-hover:text-blue-400 transition-colors" size={40} />
-              
-              <div className="flex gap-1 mb-4">
-                {[...Array(rev.rating)].map((_, i) => (
-                  <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
-                ))}
+              <div className="aspect-video overflow-hidden relative">
+                <img src={t.image} alt={t.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent" />
+                <div className="absolute bottom-6 left-8 flex items-center gap-2 text-white">
+                  <Building2 className="text-blue-500" size={20} />
+                  <span className="font-black uppercase tracking-widest text-sm">{t.name}</span>
+                </div>
               </div>
 
-              <p className="text-slate-600 group-hover:text-white transition-colors mb-6 font-medium italic">
-                "{rev.text}"
-              </p>
-
-              <div>
-                <p className="font-black uppercase tracking-tight group-hover:text-white">{rev.name}</p>
-                <p className="text-[10px] font-bold text-blue-600 group-hover:text-blue-200 uppercase tracking-widest">{rev.work}</p>
+              <div className="p-10 space-y-6">
+                <Quote className="text-blue-500/40" size={40} />
+                <p className="text-slate-300 text-lg italic leading-relaxed">"{t.text}"</p>
+                <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                  <div className="text-white">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Location</p>
+                    <p className="font-bold">{t.location}</p>
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(t.rating)].map((_, index) => (
+                      <Star key={index} size={16} className="fill-blue-500 text-blue-500" />
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
